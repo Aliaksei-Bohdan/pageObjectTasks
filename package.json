@@ -1,0 +1,24 @@
+{
+  "name": "telescope-epam",
+  "version": "1.0.0",
+  "description": "First task for Webdriver",
+  "main": "telescope_epam.js",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "chromedriver": "76.0.0",
+    "mocha": "6.2.0",
+    "mochawesome": "^4.1.0",
+    "selenium-webdriver": "^3.6.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha library.js",
+    "test-1": "node_modules/.bin/mocha using-mocha.js --reporter mochawesome"
+  },
+  "author": "",
+  "license": "ISC"
+}
