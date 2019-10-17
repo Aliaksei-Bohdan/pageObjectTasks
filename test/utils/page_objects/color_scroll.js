@@ -1,13 +1,14 @@
 const BasePage = require('./base_page');
-var webDriver = require('selenium-webdriver');
+const logger = require('../../config/logger.config');
 
 class ColorScroll extends BasePage {
     constructor() {
         super();
         
     }
-    changeColor() {
-        let headOfUnit = this.findByXpath('//div[contains(@class,"InformersContainerView---index---informer")][@data-id][2]');
+    async changeColor() {
+        let headOfUnit = await this.findByXpath('//div[contains(@class,"InformersContainerView---index---informer")][@data-id][2]');
+        logger.info(`"Element for changing color is ${headOfUnit}"`);
         return this.redLineWithJS(headOfUnit);
     }    
 

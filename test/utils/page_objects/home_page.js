@@ -7,11 +7,10 @@ class HomePage extends BasePage {
         super(); 
     }
 
-    FindFrame() {
-        return driver.switchTo().frame(this.findByXpath("//iframe[@id='duo_iframe']")).then(function() {
-            return driver.findElement(By.css('.positive:nth-child(3)')).click();
-        });
-    };
+    async FindFrame() {
+        await driver.switchTo().frame(this.findByXpath("//iframe[@id='duo_iframe']"))
+        return driver.findElement(By.css('.positive:nth-child(3)')).click();
+    }
 }
 
 module.exports = HomePage; // можно создать экземпляр класса и не делать это дальше = new HomePage()

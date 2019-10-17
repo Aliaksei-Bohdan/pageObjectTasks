@@ -1,7 +1,7 @@
-const HomePage = require('./lib/home_page');
-const DownloadSearchPage = require('./lib/download_page');
-const SearchMyself = require('./lib/search_myself');
-const ColorScroll = require('./lib/color_scroll');
+const HomePage = require('../utils/page_objects/home_page');
+const DownloadSearchPage = require('../utils/page_objects/download_page');
+const SearchMyself = require('../utils/page_objects/search_myself');
+const ColorScroll = require('../utils/page_objects/color_scroll');
 
 describe('working with telescope', function() {
     this.timeout(50000);

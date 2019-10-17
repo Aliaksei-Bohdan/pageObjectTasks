@@ -1,5 +1,5 @@
 var webDriver = require('selenium-webdriver');
-const logger = require('../config/logger.config');
+const logger = require('../../config/logger.config');
 var driver = new webDriver.Builder().withCapabilities(webDriver.Capabilities.chrome()).build();
 var By = webDriver.By;
 var until = webDriver.until;
@@ -10,6 +10,7 @@ class BasePage {
     }
     
     visit(theUrl) {
+        logger.debug(`Opening "${theUrl}" url`);
         return driver.get(theUrl);
     }
 
@@ -43,21 +44,16 @@ class BasePage {
         return driver.findElement(By.linkText(el));
     }
 
-    redLineWithJS(el) {
+    async redLineWithJS(el) {
         var bg;
-        return el.getCssValue("color").then(function (col) {
-            bg = col;
-        }).then(function () {
-            return driver.executeScript("arguments[0].style.color = '" + "red" + "'", el)
-        }).then(function () {
-            return driver.sleep(3000);
-        }).then(function () {
-            logger.info(`What is background now: ${bg}`);
-            logger.log('debug',"test message for debug logger");
-            return driver.executeScript("arguments[0].style.color = '" + bg + "'", el);
-        }).then(function () {
-            return driver.sleep(1000);
-        })
+        const col = await el.getCssValue("color")
+        bg = col;
+        await driver.executeScript("arguments[0].style.color = '" + "red" + "'", el)
+        await driver.sleep(3000);
+        logger.info(`What is background now: "${bg}"`);
+        logger.log('debug',"test message for debug logger");
+        await driver.executeScript("arguments[0].style.color = '" + bg + "'", el);
+        await driver.sleep(1000);
     }
 
     quit() {

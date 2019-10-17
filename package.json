@@ -17,7 +17,7 @@
     "winston": "3.2.1"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha using-mocha.js --reporter mochawesome"
+    "test": "node_modules/.bin/mocha test/specs/using-mocha.spec.js --reporter mochawesome"
   },
   "author": "",
   "license": "ISC"
